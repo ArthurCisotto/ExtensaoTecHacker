@@ -1,9 +1,13 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Query for the active tab in the current window
-    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-        // tabs[0] is the active tab in the current window
-        var currentTab = tabs[0];
-        // Set the text content with the URL of the current tab
-        document.getElementById('url-text').textContent += currentTab.url;
+    browser.tabs.query({active: true, currentWindow: true}).then((tabs) => {
+        const currentTab = tabs[0];
+        browser.runtime.sendMessage({ request: "getData", tabId: currentTab.id }).then(response => {
+            document.getElementById('third-party-requests').textContent = `Third Party Requests: ${response.thirdPartyRequests}`;
+            document.getElementById('cookies-used').textContent = `Cookies Used: ${response.cookiesUsed}`;
+            document.getElementById('local-storage-items').textContent = `Local Storage Items: ${response.localStorageItems}`;
+            document.getElementById('session-storage-items').textContent = `Session Storage Items: ${response.sessionStorageItems}`;
+            document.getElementById('canvas-fingerprint').textContent = `Canvas Fingerprint Detected: ${response.canvasFingerprintDetected ? 'Yes' : 'No'}`;
+            document.getElementById('privacy-score').textContent = `Privacy Score: ${response.score}`;
+        });
     });
 });
