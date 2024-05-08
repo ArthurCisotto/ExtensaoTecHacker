@@ -3,16 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Watcher Popup</title>
+    <title>Security Report</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 20px;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        h1 {
+            color: #0056b3;
+            text-align: center;
+        }
+        p {
+            background: #ffffff;
+            padding: 10px 20px;
+            border-left: 5px solid #0056b3;
+            margin: 10px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        p.loading {
+            color: #999;
+        }
+    </style>
 </head>
 <body>
     <h1>Security Report</h1>
-    <p id="third-party-requests">Third Party Requests: Loading...</p>
-    <p id="cookies-used">Cookies Used: Loading...</p>
-    <p id="local-storage-items">Local Storage Items: Loading...</p>
-    <p id="session-storage-items">Session Storage Items: Loading...</p>
-    <p id="canvas-fingerprint">Canvas Fingerprint Detected: Loading...</p>
-    <p id="privacy-score">Privacy Score: Loading...</p>
+    <p id="third-party-requests" class="loading">Third Party Requests: Loading...</p>
+    <p id="first-party-cookies" class="loading">First Party Cookies: Loading...</p>
+    <p id="third-party-cookies" class="loading">Third Party Cookies: Loading...</p>
+    <p id="local-storage-items" class="loading">Local Storage Items: Loading...</p>
+    <p id="session-storage-items" class="loading">Session Storage Items: Loading...</p>
+    <p id="canvas-fingerprint" class="loading">Canvas Fingerprint Detected: Loading...</p>
+    <p id="hijacking-risk" class="loading">Hijacking Risk: Loading...</p>
+    <p id="privacy-score" class="loading">Privacy Score: Loading...</p>
     <script src="popup.js"></script>
 </body>
 </html>
